@@ -6,7 +6,9 @@ Or maybe sometimes you like to have the 4k TV playing a show while playing a gam
 This was the issue for me.
 Normally, this causes annoying issues of having to reconfigure graphical settings within the game each time.
 
-This simple python script eliminates that.
+Or a more common example would be with the Steam Deck. With the Steam Deck you have to reconfigure the graphical settings for games if you dock it, and then reconfigure them back once you play the game undocked again. This solves the issue, you can simply run the progra after docking or after undocking and return all configurations to what they should be.
+
+This simple python program alleviates the burden.
 
 INSTRUCTIONS -
 (Using Left 4 Dead 2 as an example)
@@ -40,5 +42,12 @@ When running the script you're greeted with a window displays a few buttons. Sta
 In the home menu it displays your current list of configs for games, as well as the last configuration selected.
 Select a game and click "swap config" to be displayed your options and you can choose.
 Selecting "swap all configs" will swap every game to the config that you type in. It must match the options exactly, if a game doesn't have that option it will simply be skipped.
+
+FOR STEAMDECK/LINUX - Most of the instructions are the same. Place the script and config file with your folder in the /home/deck directory.
+You must then run the command via terminal
+chmod +x /home/deck/configswap.py
+- you only have to run this once.
+Add it to your steam library and you should be able to boot it in game mode! :)
+
 
 
