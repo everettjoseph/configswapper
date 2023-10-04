@@ -1,27 +1,23 @@
 # configswapper
 
-This is a graphics configuration swapper tool. The primary use is to quickly swap graphical configuration files in preparation for playing on a different monitor.
-For example if you have a 1080p monitor that you use for some games due to GPU performance, but maybe on other games you want to use your 4k TV so you can sit back with a controller.
-Or maybe sometimes you like to have the 4k TV playing a show while playing a game, then another time you'd like to play the game on the 4k TV again.
-This was the issue for me.
-Normally, this causes annoying issues of having to reconfigure graphical settings within the game each time.
-
-Or a more common example would be with the Steam Deck. With the Steam Deck you have to reconfigure the graphical settings for games if you dock it, and then reconfigure them back once you play the game undocked again. This solves the issue, you can simply run the progra after docking or after undocking and return all configurations to what they should be.
-
-This simple python program alleviates the burden.
+This is a graphics configuration swapper tool. The primary use is to quickly swap graphical configuration files in preparation for playing on a different monitor, in this case swapping between configurations for the steamdeck in handheld mode and docked mode. With the Steam Deck you have to reconfigure the graphical settings for games if you dock it, and then reconfigure them back once you play the game undocked again. This solves the issue, you can simply run the program after docking or after undocking and return all configurations to the desired configurations
+This app alleviates the burden.
 
 INSTRUCTIONS -
 (Using Left 4 Dead 2 as an example)
-Place the python script and .json file in your home user directory or wherever else your python directory is. 
-1. Start by launching all of your games and configuring their graphics for your first monitor/TV. So if you want to configure for 1080p first, launch every game and configure it on that monitor/TV.
-2. create a folder called "GameConfig" with respectively titled resolution folders inside it. 
-3. create game folders inside of the resolution folders.
-  ex. for 1080p you'll have /GameConfigs/1080p/Left4Dead2/
-      for 4k you'll have /GameConfigs/4k/Left4Dead2/
-4. Copy/Paste the graphical configuration file from your game into it's respective resolution folder that you created in /GameConfigs/
-   ex. If I wanted to use Left 4 Dead 2 I would be copying steamapps/common/Left 4 Dead 2/left4dead2/cfg/video.txt, i would copy that into /GameConfigs/1080p/Left4Dead2
-5. Now, repeat and do the same thing but with your other resolution/monitor.
-   ex. I would launch L4D2 on my 4k monitor, configure the graphics and exit. Copy /lef4dead2/cfg/video.txt to /GameConfigs/4k/Left4Dead2
+Place the python script and .json file in your home/deck directory. (in the file browser its just called "Home" under the "Places" sidebar)
+1. Start by launching all of your games and configuring their graphics for one mode at a time, so either handheld or docked. So if you want to configure for handheld first, launch every game and configure it while undocked.
+2. Switch to desktop mode
+3. Open terminal and run, "chmod +x /home/deck/configswap.py" you only have to run this one time. 
+4. Right click on configswap.py and click "run in konsole" once the program opens, just close it. We opened it the first time so that it generates folders for us.
+5. You'll notice that in the same directory as configswap.py it generated the "gameconfigs" folder. Inside of this folder are the "deck" and "dock" subfolders, and inside of those are individual folders for every steam game you have installed - they're auto-generated.
+6. Copy/Paste the graphical configuration file from your game into it's respective configuration folder that you created in /gameconfigs/
+  ex. for deck configuration you'll have /gameconfigs/deck/Left 4 Dead 2/yourconfigfile.example
+      for dock configuration you'll have /gameconfigs/dock/Left 4 Dead 2/yourconfigfile.example
+   IMPORTANT: do NOT rename configuration files. Keep them the exact same name.
+   NOTE: you can include multiple files.
+   NOTE: many games you also need to copy the video default files, as this will "detect" a new monitor. L4D2 is an example of this, and both the videodefaults.txt and video.txt must be copied.
+9. Now, repeat and do the same thing but the with the steamdeck docked. Launch each game and configure it, then return to desktop mode and copy each configuration file from each game into its respective /gameconfigs/dock/game folder.
 
 
 When running the script you're greeted with a window displays a few buttons. Start by clicking "New Game"
@@ -29,25 +25,19 @@ When running the script you're greeted with a window displays a few buttons. Sta
 1. First, you'll type the name of the game for "Game Name". This is just what displays in your game list and doesn't have to be exact.
 
 2. In the "Game Directory" option, point to where the config file is stored for the game. It will default to the steamapps/common folder.
-  For instance, if i wanted to use Left 4 Dead 2 i would point to steamapps/common/Left 4 Dead 2/left4dead2/cfg/ and it OK, as the config file for L4D2, video.txt, is stored here. 
+  For instance, if i wanted to use Left 4 Dead 2 i would point to steamapps/common/Left 4 Dead 2/left4dead2/cfg/ and hit OK, as the config file for L4D2, video.txt and videodefaults.txt, is stored here. 
 
-3. For "Config 1 Name" just make it whatever your first resolution is. Here i'll name mine "1080p"
-4. use "Select files" under config 1, then select the config file for your first resolution.
-   ex. Here i would be selecting /GameConfigs/1080p/Left4Dead2/video.txt
-   tip - you can select mulitple files.
-5. Repeat for config 2.
-   ex. I would make config 2 "4k", then point it to /GameConfigs/4k/Left4Dead2/video.txt
-6. Select save. You'll be brought back to the home menu
+3. Select the files for the Deck config, you should point to the files for that game that you placed in the /gameconfigs/deck/ subfolder. Do the same for the dock config files.
+
+4. Select save. You'll be brought back to the home menu
 
 In the home menu it displays your current list of configs for games, as well as the last configuration selected.
-Select a game and click "swap config" to be displayed your options and you can choose.
-Selecting "swap all configs" will swap every game to the config that you type in. It must match the options exactly, if a game doesn't have that option it will simply be skipped.
+Select a game and click "swap config" to select between dock and deck configurations.
+Selecting "swap all configs" will swap every game to the config that you select.
 
-FOR STEAMDECK/LINUX - Most of the instructions are the same. Place the script and config file with your folder in the /home/deck directory.
-You must then run the command via terminal
-chmod +x /home/deck/configswap.py
-- you only have to run this once.
-Add it to your steam library and you should be able to boot it in game mode! :)
+Once you're done setting everything up you can add the python script configswap.py to your steam library. Return to gamemode and launch it. Open up steampinput and choose the mouse control options!
+
+:)
 
 
 
